@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="login.css">
+    <title>Dashboard</title>
+</head>
+
+<body>
+
+    <div class="top-container">
+
+        <div class="nav">
+            <div class="logo">
+                <i class='bx bx-chart'></i>
+                <a href="#">STOCKFLOW</a>
+            </div>
+
+            <div class="nav-links">
+                <a href="#">Dashboard</a>
+                <a href="#">Statistics</a>
+        <a href="#">Settings</a>
+            </div>
+
+            <div class="right-section">
+                <i class='bx bx-bell'></i>
+
+
+                <div class="profile">
+                    <div class="info">
+                        <img src="user.png">
+                        <div>
+                            <a href="#">ARADHYA</a>
+                            <p>MANAGER</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="status">
+            <div class="header">
+                <h4 id="big">MANAGEMENT</h4>
+            </div>
+
+            <div class="items-list">
+                <div class="item">
+                    <div class="info">
+                        <div>
+                            <h5>STOCK MANAGEMENT</h5>
+                        </div>
+                        <i class='bx bx-data'></i>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="info">
+                        <div>
+                            <h5>SALES/REVENUE</h5>
+                        </div>
+                        <i class='bx bx-store'></i>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="info">
+                        <div>
+                            <h5>CREDENTIALS</h5>
+                        </div>
+                        <i class='bx bx-user'></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+    <div class="container">
+        <h1>Stock Tracker</h1>
+        <form>
+            <input type="text" id="symbol" placeholder="Enter Stock Symbol">
+            <button type="submit">Search</button>
+        </form>
+        <ul id="stock-list"></ul>
+    </div>
+
+
+    <div class="bottom-container">
+
+        <div class="prog-status">
+            <div class="header">
+                <h4>Stock Progress</h4>
+                <div class="tabs">
+                    <a href="#" class="active">1Y</a>
+                    <a href="#">6M</a>
+                    <a href="#">3M</a>
+                </div>
+            </div>
+
+
+
+            <canvas class="prog-chart"></canvas>
+
+        </div>
+
+        <div class="popular">
+            <div class="header">
+                <h4>New</h4>
+
+            </div>
+
+            <img src="podcast.png">
+            <div class="audio">
+                <i class='bx bx-podcast'></i>
+                <a href="#">Podcast:Stop-loss Orders</a>
+            </div>
+            <p>Learn to master "RISK MANAGEMENT"</p>
+            <div class="listen">
+                <div class="author">
+                    <img src="podcastman.png">
+                    <div>
+                        <a href="#">Ashmit</a>
+                        <p>Data Analyst</p>
+                    </div>
+                </div>
+                <button>Listen<i class='bx bx-right-arrow-alt'></i></button>
+            </div>
+
+        </div>
+
+
+        <div class="upcoming">
+
+            <div class="header">
+                <h4>SCHEDULE</h4>
+                <div class="month-select">
+                  <select id="month-select">
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July" selected>July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                  </select>
+                </div>
+              </div>
+
+            <div class="dates">
+                <div class="item">
+                    <h5>Mo</h5>
+                    <a href="#">12</a>
+                </div>
+                <div class="item active">
+                    <h5>Tu</h5>
+                    <a href="#">13</a>
+                </div>
+                <div class="item">
+                    <h5>We</h5>
+                    <a href="#">14</a>
+                </div>
+                <div class="item">
+                    <h5>Th</h5>
+                    <a href="#">15</a>
+                </div>
+                <div class="item">
+                    <h5>Fr</h5>
+                    <a href="#">16</a>
+                </div>
+                <div class="item">
+                    <h5>Sa</h5>
+                    <a href="#">17</a>
+                </div>
+                <div class="item">
+                    <h5>Su</h5>
+                    <a href="#">18</a>
+                </div>
+            </div>
+
+            <div class="events">
+                <div class="item">
+                    <div>
+                        <i class='bx bxs-label'></i>
+                        <div class="event-info">
+                            <a href="#">NEW SUPPLIER</a>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div>
+                        <i class='bx bxs-label'></i>
+                        <div class="event-info">
+                            <a href="#">TEAM MEETING</a>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div>
+                        <i class='bx bxs-label'></i>
+                        <div class="event-info">
+                            <a href="#">MEETING WITH SAUMYE</a>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div>
+                        <i class='bx bxs-label'></i>
+                        <div class="event-info">
+                            <a href="#">NEW PRODUCT LAUNCH</a>
+
+                        </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="login.js"></script>
+
+</body>
+
+</html>
