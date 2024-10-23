@@ -1,7 +1,4 @@
-
 const ctx2 = document.querySelector('.prog-chart');
-
-
 
 new Chart(ctx2, {
     type: 'line',
@@ -13,37 +10,27 @@ new Chart(ctx2, {
             borderColor: '#0891b2',
             tension: 0.4
         },
-        {
-            label: 'EXPENSE',
-            data: [8, 6, 7, 6, 11, 8, 10],
-            borderColor: '#ca8a04',
-            tension: 0.4
-        }
-        ]
+            {
+                label: 'EXPENSE',
+                data: [8, 6, 7, 6, 11, 8, 10],
+                borderColor: '#ca8a04',
+                tension: 0.4
+            }]
     },
     options: {
         responsive: true,
         maintainAspectRatio: true,
         scales: {
             x: {
-                grid: {
-                    display: false,
-                }
+                grid: { display: false },
             },
             y: {
-                ticks: {
-                    display: false
-                },
-                border: {
-                    display: false,
-                    dash: [5, 5]
-                }
+                ticks: { display: false },
+                border: { display: false, dash: [5, 5] }
             }
         },
         plugins: {
-            legend: {
-                display: false
-            }
+            legend: { display: false }
         },
         animation: {
             duration: 1000,
@@ -51,68 +38,86 @@ new Chart(ctx2, {
         }
     }
 });
+
 const symbolInput = document.querySelector('#symbol');
 const stockList = document.querySelector('#stock-list');
 
-// Function to fetch and display the top 10 stocks
-function fetchTopStocks() {
-    // Fetch data from api
-    fetch('https://www.alphavantage.co/query?function=SECTOR&apikey=D9P414FI6YRNEDBZ').then(response => response.json()).then(data => {
-        const stocks = data['Rank A: Real-Time Performance'];
-        let html = '';
-        // Loop through the stocks and generate html for each stock
-        for (let i = 0; i < 10; i++) {
-            const symbol = Object.keys(stocks)[i];
-            const change = stocks[symbol];
-            const changeColor = parseFloat(change) >= 0 ? 'green' : 'red';
-            html += `
-            <li>
-                <span class="symbol">${symbol}</span>
-                <span class="change" style="color: ${changeColor}">${change}</span>
-            </li>    
-            `;
-        }
+// Show loading indicator
+function showLoading() {
+    stockList.innerHTML = '<li class="loading">Loading...</li>';
+}
 
-        // Update stock list container
-        stockList.innerHTML = html;
-    }).catch(error => console.error(error));
+// Function to fetch stock data for multiple symbols
+function fetchTopStocks() {
+    const topStocks = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META', 'TSLA', 'NFLX', 'NVDA', 'BRK.B', 'JNJ'];
+    const requests = topStocks.map(symbol =>
+        fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=cscchthr01qgt32f7m1gcscchthr01qgt32f7m20`)
+    );
+
+    Promise.all(requests)
+        .then(responses => Promise.all(responses.map(res => res.json())))
+        .then(dataArray => {
+            let html = '<div class="stock-bubbles">'; // Add class for styling
+            dataArray.forEach((data, index) => {
+                const symbol = topStocks[index];
+                if (data.c) {
+                    const changePercent = ((data.d / data.pc) * 100).toFixed(2); // Calculate change percentage
+                    const changeColor = parseFloat(changePercent) >= 0 ? 'green' : 'red';
+                    html += `
+                    <div class="stock-bubble" style="background-color: ${changeColor === 'green' ? '#d4edda' : '#f8d7da'};">
+                        <span class="stock-symbol">${symbol}</span>
+                        <span class="stock-price">Price: $${data.c.toFixed(2)}</span>
+                        <span class="stock-change" style="color: ${changeColor}">${changePercent}%</span>
+                    </div>`;
+                } else {
+                    html += `<div class="error">Invalid Symbol: ${symbol}</div>`;
+                }
+            });
+            html += '</div>'; // Close the bubbles container
+            stockList.innerHTML = html; // Update stock list container
+        })
+        .catch(error => {
+            console.error(error);
+            stockList.innerHTML = '<li class="error">Failed to fetch stock data.</li>';
+        });
 }
 
 // Function to fetch and display stock data for the searched symbol
 function fetchStockData(symbol) {
-    // If input was empty display top 10 stocks
+    showLoading();
     if (!symbol) {
-        fetchTopStocks();
+        fetchTopStocks(); // Display top stocks if input is empty
         return;
     }
 
-    // Fetch the stock data for the provided symbol from api
-    fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symbol}&apikey=D9P414FI6YRNEDBZ`).then(response => response.json()).then(data => {
-        const quote = data['Global Quote'];
-        if (quote && quote['10. change percent']) {
-            const changePercent = quote['10. change percent'].replace('%', '');
-            const changeColor = parseFloat(changePercent) >= 0 ? 'green' : 'red';
-            const html = `<li>
-            <span class="symbol">${symbol}</span>
-            <span class="change" style="color: ${changeColor}">${changePercent}</span>
-        </li>    
-        `;
-            stockList.innerHTML = html;
-        } else {
-            stockList.innerHTML = '<li class="error">Invalid Symbol</li>';
-        }
-    }).catch(error => console.error(error));
-
+    fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=cscchthr01qgt32f7m1gcscchthr01qgt32f7m20`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.c) {
+                const changePercent = ((data.d / data.pc) * 100).toFixed(2); // Calculate change percentage
+                const changeColor = parseFloat(changePercent) >= 0 ? 'green' : 'red';
+                stockList.innerHTML = `
+                <div class="stock-bubble" style="background-color: ${changeColor === 'green' ? '#d4edda' : '#f8d7da'};">
+                    <span class="stock-symbol">${symbol}</span>
+                    <span class="stock-price">Price: $${data.c.toFixed(2)}</span>
+                    <span class="stock-change" style="color: ${changeColor}">${changePercent}%</span>
+                </div>`;
+            } else {
+                stockList.innerHTML = '<li class="error">Invalid Symbol</li>';
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            stockList.innerHTML = '<li class="error">Failed to fetch stock data.</li>';
+        });
 }
 
-// Display top 10 on page load
+// Display top stocks on page load
 fetchTopStocks();
 
-// Handle from submission
+// Handle form submission
 document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
-
-    // Get symbol entered by user and convert it to uppercase
     const symbol = symbolInput.value.toUpperCase();
     fetchStockData(symbol);
 });
