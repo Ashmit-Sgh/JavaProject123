@@ -695,3 +695,64 @@ form button:hover{
 li.error{
     color: red;
 }
+.stock-bubbles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.stock-bubble {
+    flex: 0 0 calc(20% - 10px); /* 5 bubbles in a row with some spacing */
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.stock-bubble:hover {
+    background-color: #e0e0e0; /* Change background on hover */
+}
+
+.stock-symbol {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stock-change {
+    font-size: 14px;
+}
+#history-list {
+    margin-top: 10px;
+    max-height: 150px; /* Limit the height */
+    overflow-y: auto; /* Enable scrolling if too many items */
+}
+
+.history-item {
+    cursor: pointer; /* Show a pointer on hover */
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin: 2px 0;
+    background-color: #f9f9f9; /* Light background */
+}
+
+.history-item:hover {
+    background-color: #e9ecef; /* Darker background on hover */
+}
+.stock-bubble {
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transition */
+    /* Existing styles */
+    padding: 10px; /* Optional: add some padding for better appearance */
+    border-radius: 5px; /* Optional: rounded corners */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.stock-bubble:hover {
+    transform: translateY(-5px); /* Move up slightly */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
