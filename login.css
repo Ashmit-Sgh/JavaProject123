@@ -148,8 +148,9 @@ form button {
 .top-container .nav .right-section .profile .info img{
     width: 32px;
     height: 32px;
-    border-radius: 50%;
+    border-radius: 100%;
     border: 1px solid #f1f3f2;
+    object-fit: cover; /* Add this property to ensure the image covers the circle */
 }
 
 .top-container .nav .right-section .profile .info a{
@@ -1041,4 +1042,59 @@ body {
         padding: 0 20px;
     }
 }
+.financial-data-container {
+    display: none; /* Hide by default */
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
 
+/* Financial Box Styles */
+.financial-box {
+    background-color: #ffffff; /* White background for contrast */
+    border: 1px solid #031224; /* Dark navy border for definition */
+    border-radius: 8px; /* Rounded corners for a modern touch */
+    padding: 15px; /* Reduced padding for a more compact feel */
+    margin: 10px; /* Space between boxes */
+    text-align: center;
+    width: calc(33.333% - 20px); /* Adjusted for new margins */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transitions */
+}
+
+.financial-box:hover {
+    transform: translateY(-3px); /* Slight lift on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Text Styles */
+.financial-box h3 {
+    margin: 0;
+    font-size: 1.1rem; /* Smaller font size for headings */
+    color: #031224; /* Dark navy color for headings */
+    text-transform: uppercase; /* Uppercase for a bold look */
+}
+
+.financial-box p {
+    margin: 5px 0 0; /* Reduced margin for a compact look */
+    font-size: 0.9rem; /* Smaller font size for body text */
+    color: #000000; /* Black color for readability */
+}
+
+/* Time Range Style */
+.time-range {
+    display: none; /* Removed display of "data as of" */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .financial-box {
+        width: calc(50% - 20px); /* Adjusted for new margins */
+    }
+}
+
+@media (max-width: 480px) {
+    .financial-box {
+        width: calc(100% - 20px); /* Adjusted for new margins */
+    }
+}
