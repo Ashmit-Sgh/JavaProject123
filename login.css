@@ -22,14 +22,61 @@ img{
 }
 
 body{
-    background: #f1f3f2;
+        background-color: #ffffff;  /* or you can simply use 'white' */
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+}
 
+.search-wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 24px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    flex: 1; /* This will make it take up available space */
+    box-sizing: border-box;
+}
+
+.container h1,
+.bottom-container .prog-status .header h4 {
+    color: #2c3e50;
+}
+
+form {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+form input {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 25px 0 0 25px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+form button {
+    padding: 12px 25px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    background-color: #031224;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .top-container{
     background: #031224;
-    border-radius: 0 0 30px 30px;
-    padding-bottom: 10px;
+    border-radius: 0px;
+    padding: 10px;
 }
 
 .top-container .nav{
@@ -48,11 +95,11 @@ body{
 
 .top-container .nav .logo i{
     color: #f1f3f2;
-    font-size: 24px;
+    font-size: 60px;
 }
 
 .top-container .nav .logo a{
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .top-container .nav .nav-links{
@@ -121,7 +168,7 @@ body{
 }
 
 .top-container .status{
-    padding: 20px 20px 10px;
+    padding: 20px 10px 10px;
 }
 
 .top-container .status .header{
@@ -136,7 +183,7 @@ body{
     font-weight: 500;
 }
 
-.top-container .status .header h4#big{
+.top-container .status .header h4#big {
     flex: 3;
 }
 
@@ -148,125 +195,142 @@ body{
 .top-container .status .items-list{
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
 }
 
 .top-container .status .items-list .item{
-    background: #e0f2fe;
+    background: #ffffff;
     width: 25%;
-    padding: 20px;
-    border-radius: 18px;
+    padding: 10px 15px;
+    border-radius: 0px;
+    margin: 0 5px;
 }
-
-.top-container .status .items-list .item:nth-child(2){
-    background: #fffbeb;
-}
-
-.top-container .status .items-list .item:nth-child(3){
-    background: #bfdbfe;
-}
-
-.top-container .status .items-list .item:nth-child(4){
-    background: #031224;
-    padding: 10px;
-}
-
-.top-container .status .items-list .item .info{
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-bottom: 40px;
-}
-
-.top-container .status .items-list .item .info h5{
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.top-container .status .items-list .item .info p{
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.top-container .status .items-list .item .info > i{
-    font-size: 20px;
-    padding: 10px;
-    background: #4762a5;
-    color: #f1f3f2;
-    border-radius: 50%;
-}
-
-.top-container .status .items-list .item .progress{
-    position: relative;
-    height: 10px;
-    background: #b7c0cd;
-    border-radius: 10px;
-}
-
-.top-container .status .items-list .item .progress .bar{
-    width: 92%;
-    height: 10px;
-    background: #031224;
-    border-radius: 10px;
-}
-
-.top-container .status .items-list .item .progress::before{
-    content: "92%";
-    position: absolute;
-    top: -40px;
-    right: 0;
-    font-size: 22px;
-    font-weight: 600;
-}
-
-.top-container .status .items-list .item:nth-child(2) .progress{
-    background: #d6d3d1;
-}
-
-.top-container .status .items-list .item:nth-child(2) .progress .bar{
-    width: 65%;
-}
-
-.top-container .status .items-list .item:nth-child(2) .progress::before{
-    content: "65%";
-}
-
-
-.top-container .status .items-list .item:nth-child(3) .progress{
-    background: #3258d6;
-}
-
-.top-container .status .items-list .item:nth-child(3) .progress .bar{
-    width: 80%;
-}
-
-.top-container .status .items-list .item:nth-child(3) .progress::before{
-    content: "80%";
-}
-
 
 .bottom-container{
     display: flex;
     gap: 20px;
-    padding: 30px;
+    padding: 15px 30px;
 }
 
-.bottom-container .prog-status,
 .bottom-container .popular,
-.bottom-container .upcoming{
+.bottom-container .market-status {
     background: #fefefe;
-    padding: 20px;
-    border-radius: 24px;
+    padding: 10px 15px;
+    border-radius: 0px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: none;
 }
+
+/* Remove background and box styling for prog-status */
+.bottom-container .prog-status {
+    background: transparent;
+    padding: 0;
+    max-height: none;
+    overflow-y: visible;
+    box-shadow: none;
+}
+
+/* Increase text size in the basic financials section */
+.bottom-container .prog-status .details .item h2 {
+    font-size: 36px;  /* Increased from 30px */
+    font-weight: 400;
+}
+
+.bottom-container .prog-status .details .item p {
+    font-size: 15px;  /* Increased from 13px */
+    color: #9b9b9b;
+}
+
+/* Increase header text size */
+.bottom-container .prog-status .header h4,
+.bottom-container .popular .header h4 {
+    font-size: 18px;  /* Added this line */
+    font-weight: 600;
+}
+
+/* Increase tab text size */
+.bottom-container .prog-status .header .tabs a {
+    padding: 4px 20px;
+    font-size: 25px;  /* Increased from 12px */
+    color: #000;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* For any additional text elements */
+.bottom-container .prog-status {
+    font-size: 20px;  /* Base font size for other text */
+}
+
+/* For market status text if needed */
+.bottom-container .market-status .events .item .event-info a {
+    font-size: 20px;  /* Increased from 14px */
+}
+
+/* Specifically for market news */
+.market-news {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-height: 400px; /* Adjust this value as needed */
+    overflow-y: auto;
+}
+
+/* Make the news items more compact */
+.news-item {
+    padding: 15px; /* Reduced padding */
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+.news-item h5 {
+    font-size: 1rem; /* Slightly smaller font */
+    margin-bottom: 8px;
+}
+
+.news-content {
+    gap: 10px; /* Reduced gap */
+}
+
+.news-image {
+    width: 120px; /* Smaller images */
+    height: 80px;
+}
+
+.news-summary {
+    font-size: 0.85rem; /* Smaller text */
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.bottom-container .prog-status .details {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.bottom-container .prog-status .header {
+    margin-bottom: 20px;
+}
+
+/* Adjust market status content */
+.bottom-container .market-status .events .item {
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
+.bottom-container .market-status h4 {
+    margin-bottom: 15px; /* Adjust the value to set the gap */
+}
+
 
 .bottom-container .prog-status{
     width: 50%;
 }
 
 .bottom-container .prog-status .header,
-.bottom-container .popular .header,
-.bottom-container .upcoming .header{
+.bottom-container .popular .header{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -274,8 +338,7 @@ body{
 }
 
 .bottom-container .prog-status .header h4,
-.bottom-container .popular .header h4,
-.bottom-container .upcoming .header h4{
+.bottom-container .popular .header h4{
     font-weight: 600;
 }
 
@@ -325,13 +388,11 @@ body{
     width: 25%;
 }
 
-.bottom-container .popular .header,
-.bottom-container .upcoming .header{
+.bottom-container .popular .header{
     margin-bottom: 40px;
 }
 
-.bottom-container .popular .header a,
-.bottom-container .upcoming .header a{
+.bottom-container .popular .header a{
     font-size: 12px;
     color: #000;
     font-weight: 600;
@@ -425,78 +486,6 @@ body{
     width: 25%;
 }
 
-.bottom-container .upcoming .dates{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-}
-
-.bottom-container .upcoming .dates .item{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-}
-
-.bottom-container .upcoming .dates .item h5{
-    font-weight: 600;
-}
-
-.bottom-container .upcoming .dates .item a{
-    color: #000;
-    font-size: 13px;
-    padding: 5px 9px;
-    border-radius: 50%;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.bottom-container .upcoming .dates .item.active a,
-.bottom-container .upcoming .dates .item a:hover{
-    color: #fff;
-    background: #031224;
-}
-
-.bottom-container .upcoming .events{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.bottom-container .upcoming .events .item{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #eff6ff;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.bottom-container .upcoming .events .item > i{
-    cursor: pointer;
-}
-
-.bottom-container .upcoming .events .item > div{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.bottom-container .upcoming .events .item > div i{
-    font-size: 30px;
-}
-
-.bottom-container .upcoming .events .item .event-info a{
-    font-size: 14px;
-    color: #000;
-    font-weight: 500;
-}
-
-.bottom-container .upcoming .events .item .event-info p{
-    font-size: 13px;
-    color: #9b9b9b;
-}
-
 @media screen and (max-width: 1300px) {
 
     .bottom-container .popular .audio a{
@@ -523,21 +512,6 @@ body{
         justify-content: center;
     }
 
-    .bottom-container .upcoming .events .item{
-        padding: 6px 10px;
-    }
-
-    .bottom-container .upcoming .events .item > div i{
-        font-size: 20px;
-    }
-
-    .bottom-container .upcoming .events .item .event-info a{
-        font-size: 13px;
-    }
-
-    .bottom-container .upcoming .events .item .event-info p{
-        font-size: 12px;
-    }
 
 }
 
@@ -569,7 +543,7 @@ body{
     }
 
     .bottom-container .popular,
-    .bottom-container .upcoming{
+    .bottom-container .market-status{
         width: 48%;
     }
 
@@ -590,15 +564,15 @@ body{
         width: 50%;
     }
 
-    .bottom-container .upcoming .events .item{
+    .bottom-container .market-status .events .item{
         padding: 10px;
     }
 
-    .bottom-container .upcoming .events .item > div i{
+    .bottom-container .market-status .events .item > div i{
         font-size: 30px;
     }
 
-    .bottom-container .upcoming .events .item .event-info a{
+    .bottom-container .market-status .events .item .event-info a{
         font-size: 14px;
     }
 
@@ -615,8 +589,7 @@ body{
         font-size: 15px;
     }
 
-    .bottom-container .popular,
-    .bottom-container .upcoming{
+    .bottom-container .popular{
         width: 100%;
     }
 
@@ -632,13 +605,16 @@ body{
 
 
 
-.container{
+/* Modify or remove the border-radius and box-shadow for a flatter look */
+.container {
     background-color: #fff;
-    width: 100%;
     padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0px; /* Changed from 24px to 0px */
+    box-shadow: none; /* Removed box shadow */
+    flex: 1;
+    box-sizing: border-box;
 }
+
 
 .container h1{
     font-size: 1.7rem;
@@ -756,3 +732,202 @@ li.error{
     transform: translateY(-5px); /* Move up slightly */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
 }
+
+.market-news {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.market-news h4 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.market-news h4::before {
+    content: '📰';
+    margin-right: 10px;
+}
+
+.news-item {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 4px solid #3498db;
+}
+
+.news-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.news-item h5 {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.news-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.news-source {
+    background: #3498db;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 15px;
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+.news-date {
+    color: #666;
+}
+
+.news-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.news-image {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.news-summary {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.news-link {
+    display: inline-block;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.news-link:hover {
+    color: #2980b9;
+}
+
+/* Custom scrollbar for the news container */
+.market-news::-webkit-scrollbar {
+    width: 8px;
+}
+
+.market-news::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.market-news::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 4px;
+}
+
+.market-news::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}
+
+/* Loading animation */
+.news-loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+.news-error {
+    text-align: center;
+    padding: 20px;
+    color: #e74c3c;
+    background: #fde8e7;
+    border-radius: 8px;
+}
+
+.item {
+    height: 120px;
+    padding: 1rem;
+}
+
+.info {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to top */
+    position: relative; /* Add this */
+    padding-right: 30px; /* Add space for icon */
+}
+
+.market-info {
+    height: 100%;
+    width: 100%;
+}
+
+.market-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.status-line {
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Prevent line breaks */
+}
+
+.label {
+    font-size: 0.9rem;
+    margin-right: 5px; /* Add space between label and value */
+}
+
+#currentTime, #marketStatus {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.info {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    padding-right: 30px;
+}
+
+.info i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.2rem;
+}
+
+.item {
+    height: 120px;
+    padding: 1rem;
+}
+
+
