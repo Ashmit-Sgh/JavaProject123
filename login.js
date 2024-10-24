@@ -1,44 +1,52 @@
-// Function to fetch and display basic financials
 async function fetchBasicFinancials(symbol) {
     try {
         const response = await fetch(`https://finnhub.io/api/v1/stock/metric?symbol=${symbol}&metric=all&token=cscchthr01qgt32f7m1gcscchthr01qgt32f7m20`);
         const data = await response.json();
 
         if (data.metric) {
-            // Format market cap to billions
-            const formatMarketCap = (value) => {
-                return `$${(value / 1000000000).toFixed(2)}B`;
-            };
+            const financialDataContainer = document.getElementById('financial-data-container');
+            financialDataContainer.innerHTML = ''; // Clear previous data
 
-            // Format large numbers
-            const formatNumber = (value) => {
-                return new Intl.NumberFormat('en-US', {
-                    style: 'currency',
-                    currency: 'USD',
-                    maximumFractionDigits: 2,
-                    minimumFractionDigits: 2
-                }).format(value);
-            };
+            const metrics = [
+                { name: 'Market Cap', value: formatMarketCap(data.metric.marketCapitalization * 1000000) },
+                { name: 'P/E Ratio', value: data.metric.peBasicExclExtraTTM?.toFixed(2) || 'N/A' },
+                { name: '52W High', value: formatNumber(data.metric['52WeekHigh']) },
+                { name: '52W Low', value: formatNumber(data.metric['52WeekLow']) },
+                { name: 'Revenue', value: formatMarketCap(data.metric.revenuePerShareTTM * data.metric.marketCapitalization) },
+                { name: 'Gross Profit', value: formatMarketCap(data.metric.grossMarginTTM * data.metric.revenuePerShareTTM * data.metric.marketCapitalization / 100) },
+                
+            ];
 
-            // Update DOM elements with financial data
-            document.getElementById('marketCap').textContent = formatMarketCap(data.metric.marketCapitalization * 1000000);
-            document.getElementById('peRatio').textContent = data.metric.peBasicExclExtraTTM?.toFixed(2) || 'N/A';
-            document.getElementById('52High').textContent = formatNumber(data.metric['52WeekHigh']);
-            document.getElementById('52Low').textContent = formatNumber(data.metric['52WeekLow']);
-            document.getElementById('revenue').textContent = formatMarketCap(data.metric.revenuePerShareTTM * data.metric.marketCapitalization);
-            document.getElementById('grossProfit').textContent = formatMarketCap(data.metric.grossMarginTTM * data.metric.revenuePerShareTTM * data.metric.marketCapitalization / 100);
+            metrics.forEach(metric => {
+                const box = document.createElement('div');
+                box.className = 'financial-box';
+                box.innerHTML = `
+                    <h3>${metric.name}</h3>
+                    <p>${metric.value}</p>
+                `;
+                financialDataContainer.appendChild(box);
+            });
 
-            // Update the company name in the header
-            document.querySelector('.prog-status .header h4').textContent = `${symbol} Basic Financials`;
+            financialDataContainer.style.display = 'flex';
         }
     } catch (error) {
         console.error('Error fetching basic financials:', error);
-        // Show error message in metrics
-        const metrics = ['marketCap', 'peRatio', '52High', '52Low', 'revenue', 'grossProfit'];
-        metrics.forEach(metric => {
-            document.getElementById(metric).textContent = 'N/A';
-        });
+        document.getElementById('financial-data-container').innerHTML = '<p class="error">Failed to fetch financial data.</p>';
     }
+}
+
+// Helper functions (add these if not already present)
+function formatMarketCap(value) {
+    return `$${(value / 1000000000).toFixed(2)}B`;
+}
+
+function formatNumber(value) {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2
+    }).format(value);
 }
 
 const symbolInput = document.querySelector('#symbol');
