@@ -11,15 +11,13 @@
 </head>
 
 <body>
-
+<div class="page-wrapper">
     <div class="top-container">
-
         <div class="nav">
             <div class="logo">
                 <i class='bx bx-chart'></i>
                 <a href="#">STOCKFLOW</a>
             </div>
-
 
             <div class="nav-links">
                 <a href="#">Dashboard</a>
@@ -29,8 +27,6 @@
 
             <div class="right-section">
                 <i class='bx bx-bell'></i>
-
-
                 <div class="profile">
                     <div class="info">
                         <img src="user.png">
@@ -39,10 +35,8 @@
                             <p>MANAGER</p>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
 
         <div class="status">
@@ -52,17 +46,15 @@
 
             <div class="items-list">
                 <div class="item">
-                <div class="info">
-                    <div>
-                        <h5>NASDAQ 100</h5>
-                        <p id="nasdaq-price">Loading...</p>
-                        <p id="nasdaq-change" class="change">0.00%</p>
+                    <div class="info">
+                        <div>
+                            <h5>NASDAQ 100</h5>
+                            <p id="nasdaq-price">Loading...</p>
+                            <p id="nasdaq-change" class="change">0.00%</p>
+                        </div>
+                        <i class='bx bx-trending-up'></i>
                     </div>
-                    <i class='bx bx-trending-up'></i>
                 </div>
-            </div>
-                <!-- HTML for the market status box -->
-                <!-- HTML for the market status box -->
                 <div class="item">
                     <div class="info">
                         <div class="market-info">
@@ -81,20 +73,10 @@
                         <i class='bx bx-time'></i>
                     </div>
                 </div>
-                <!--<div class="item">
-                    <div class="info">
-                        <div>
-                            <h5>CREDENTIALS</h5>
-                        </div>
-                        <i class='bx bx-user'></i>
-                    </div>
-                </div>-->
             </div>
         </div>
     </div>
 
-
-    </div>
     <div class="container">
         <h1>Stock Tracker</h1>
         <form>
@@ -105,41 +87,39 @@
     </div>
 
     <div class="bottom-container">
-
-        <div class="bottom-container">
-            <div class="prog-status">
-                <div class="header">
-                    <h4>Basic Financials</h4>
-                </div>
-                <div class="financials-container">
-                    <div class="financial-metrics">
-                        <div class="metric">
-                            <h5>Market Cap</h5>
-                            <p id="marketCap">-</p>
-                        </div>
-                        <div class="metric">
-                            <h5>P/E Ratio</h5>
-                            <p id="peRatio">-</p>
-                        </div>
-                        <div class="metric">
-                            <h5>52W High</h5>
-                            <p id="52High">-</p>
-                        </div>
-                        <div class="metric">
-                            <h5>52W Low</h5>
-                            <p id="52Low">-</p>
-                        </div>
-                        <div class="metric">
-                            <h5>Revenue</h5>
-                            <p id="revenue">-</p>
-                        </div>
-                        <div class="metric">
-                            <h5>Gross Profit</h5>
-                            <p id="grossProfit">-</p>
-                        </div>
+        <div class="prog-status">
+            <div class="header">
+                <h4>Basic Financials</h4>
+            </div>
+            <div class="financials-container">
+                <div class="financial-metrics">
+                    <div class="metric">
+                        <h5>Market Cap</h5>
+                        <p id="marketCap">-</p>
+                    </div>
+                    <div class="metric">
+                        <h5>P/E Ratio</h5>
+                        <p id="peRatio">-</p>
+                    </div>
+                    <div class="metric">
+                        <h5>52W High</h5>
+                        <p id="52High">-</p>
+                    </div>
+                    <div class="metric">
+                        <h5>52W Low</h5>
+                        <p id="52Low">-</p>
+                    </div>
+                    <div class="metric">
+                        <h5>Revenue</h5>
+                        <p id="revenue">-</p>
+                    </div>
+                    <div class="metric">
+                        <h5>Gross Profit</h5>
+                        <p id="grossProfit">-</p>
                     </div>
                 </div>
             </div>
+        </div>
 
         <div class="market-news">
             <h4>Market News</h4>
@@ -147,10 +127,38 @@
                 <!-- News items will be populated here -->
             </div>
         </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="login.js"></script>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>STOCKFLOW is your premier platform for real-time stock tracking and market analysis.</p>
+                <p>The data is fetched from FINNHUB STOCK API</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: contact@stockflow.com</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 STOCKFLOW. All rights reserved.</p>
+        </div>
+    </footer>
+</div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="login.js"></script>
 </body>
 
 </html>
