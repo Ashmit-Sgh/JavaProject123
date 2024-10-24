@@ -29,7 +29,7 @@
                 <i class='bx bx-bell'></i>
                 <div class="profile">
                     <div class="info">
-                        <img src="user.png">
+                        <img src="user.png" class="profile-img">
                         <div>
                             <a href="#">ADMIN</a>
                             <p>MANAGER</p>
@@ -40,9 +40,6 @@
         </div>
 
         <div class="status">
-            <div class="header">
-                <h4 id="big">MANAGEMENT</h4>
-            </div>
 
             <div class="items-list">
                 <div class="item">
@@ -61,7 +58,7 @@
                             <h5>MARKET STATUS</h5>
                             <div class="market-details">
                                 <div class="status-line">
-                                    <span class="label">Current Time (ET):</span>
+                                    <span class="label">Time(ET):</span>
                                     <span id="currentTime"></span>
                                 </div>
                                 <div class="status-line">
@@ -77,49 +74,17 @@
         </div>
     </div>
 
-    <div class="container">
-        <h1>Stock Tracker</h1>
+    <div class="container" style="text-align: center;">
+        <h1 style="display: inline;">Stock Tracker</h1>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRplhCR1fe5LWq_Aa5jLLzlngK-3dC_2Jdb0Q&s" alt="Description of the image" style="width: 30px; height: auto; vertical-align: middle; margin-top: -10px;">
         <form>
             <input type="text" id="symbol" placeholder="Enter Stock Symbol">
             <button type="submit">Search</button>
         </form>
         <ul id="stock-list"></ul>
     </div>
+    <div id="financial-data-container" class="financial-data-container"></div>
 
-    <div class="bottom-container">
-        <div class="prog-status">
-            <div class="header">
-                <h4>Basic Financials</h4>
-            </div>
-            <div class="financials-container">
-                <div class="financial-metrics">
-                    <div class="metric">
-                        <h5>Market Cap</h5>
-                        <p id="marketCap">-</p>
-                    </div>
-                    <div class="metric">
-                        <h5>P/E Ratio</h5>
-                        <p id="peRatio">-</p>
-                    </div>
-                    <div class="metric">
-                        <h5>52W High</h5>
-                        <p id="52High">-</p>
-                    </div>
-                    <div class="metric">
-                        <h5>52W Low</h5>
-                        <p id="52Low">-</p>
-                    </div>
-                    <div class="metric">
-                        <h5>Revenue</h5>
-                        <p id="revenue">-</p>
-                    </div>
-                    <div class="metric">
-                        <h5>Gross Profit</h5>
-                        <p id="grossProfit">-</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="market-news">
             <h4>Market News</h4>
