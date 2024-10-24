@@ -930,4 +930,115 @@ li.error{
     padding: 1rem;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content, .market-news {
+    flex: 1;
+}
+
+.footer {
+    width: 100%;
+    background-color: #031224;
+    color: #fff;
+    padding: 60px 0 30px; /* Increased overall padding */
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between; /* This will spread out the sections */
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.footer-section {
+    flex: 0 1 calc(25% - 40px); /* Reduced width to create more space between sections */
+    margin-bottom: 30px;
+    padding: 0 20px; /* Added horizontal padding to each section */
+}
+
+.footer-section h3 {
+    font-size: 20px; /* Slightly larger headings */
+    margin-bottom: 25px; /* Increased space below headings */
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.footer-section p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 12px;
+}
+
+.footer-section a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 40px; /* Increased top padding */
+    margin-top: 40px; /* Increased top margin */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 12px;
+    color: #a0a0a0;
+}
+
+/* Clear any floats */
+.market-news::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+    .footer-section {
+        flex: 0 1 calc(50% - 40px); /* Two columns on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-section {
+        width: 100%;
+        margin-bottom: 40px; /* Increased margin for mobile */
+        padding: 0; /* Remove horizontal padding on mobile */
+    }
+
+    .footer {
+        padding: 40px 0 20px;
+    }
+
+    .footer-content {
+        padding: 0 20px;
+    }
+}
 
