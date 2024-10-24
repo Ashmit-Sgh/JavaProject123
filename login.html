@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="login.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <title>Dashboard</title>
 </head>
 
@@ -19,10 +20,11 @@
                 <a href="#">STOCKFLOW</a>
             </div>
 
+
             <div class="nav-links">
                 <a href="#">Dashboard</a>
-                <a href="#">Statistics</a>
-        <a href="#">Settings</a>
+                <a href="ipo.html" class="ipo-button">IPO Calendar</a>
+                <a href="#">Settings</a>
             </div>
 
             <div class="right-section">
@@ -33,7 +35,7 @@
                     <div class="info">
                         <img src="user.png">
                         <div>
-                            <a href="#">ARADHYA</a>
+                            <a href="#">ADMIN</a>
                             <p>MANAGER</p>
                         </div>
                     </div>
@@ -50,29 +52,43 @@
 
             <div class="items-list">
                 <div class="item">
-                    <div class="info">
-                        <div>
-                            <h5>STOCK MANAGEMENT</h5>
-                        </div>
-                        <i class='bx bx-data'></i>
+                <div class="info">
+                    <div>
+                        <h5>NASDAQ 100</h5>
+                        <p id="nasdaq-price">Loading...</p>
+                        <p id="nasdaq-change" class="change">0.00%</p>
                     </div>
+                    <i class='bx bx-trending-up'></i>
                 </div>
+            </div>
+                <!-- HTML for the market status box -->
+                <!-- HTML for the market status box -->
                 <div class="item">
                     <div class="info">
-                        <div>
-                            <h5>SALES/REVENUE</h5>
+                        <div class="market-info">
+                            <h5>MARKET STATUS</h5>
+                            <div class="market-details">
+                                <div class="status-line">
+                                    <span class="label">Current Time (ET):</span>
+                                    <span id="currentTime"></span>
+                                </div>
+                                <div class="status-line">
+                                    <span class="label">Status:</span>
+                                    <span id="marketStatus"></span>
+                                </div>
+                            </div>
                         </div>
-                        <i class='bx bx-store'></i>
+                        <i class='bx bx-time'></i>
                     </div>
                 </div>
-                <div class="item">
+                <!--<div class="item">
                     <div class="info">
                         <div>
                             <h5>CREDENTIALS</h5>
                         </div>
                         <i class='bx bx-user'></i>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
@@ -88,150 +104,51 @@
         <ul id="stock-list"></ul>
     </div>
 
-
     <div class="bottom-container">
 
-        <div class="prog-status">
-            <div class="header">
-                <h4>Stock Progress</h4>
-                <div class="tabs">
-                    <a href="#" class="active">1Y</a>
-                    <a href="#">6M</a>
-                    <a href="#">3M</a>
+        <div class="bottom-container">
+            <div class="prog-status">
+                <div class="header">
+                    <h4>Basic Financials</h4>
+                </div>
+                <div class="financials-container">
+                    <div class="financial-metrics">
+                        <div class="metric">
+                            <h5>Market Cap</h5>
+                            <p id="marketCap">-</p>
+                        </div>
+                        <div class="metric">
+                            <h5>P/E Ratio</h5>
+                            <p id="peRatio">-</p>
+                        </div>
+                        <div class="metric">
+                            <h5>52W High</h5>
+                            <p id="52High">-</p>
+                        </div>
+                        <div class="metric">
+                            <h5>52W Low</h5>
+                            <p id="52Low">-</p>
+                        </div>
+                        <div class="metric">
+                            <h5>Revenue</h5>
+                            <p id="revenue">-</p>
+                        </div>
+                        <div class="metric">
+                            <h5>Gross Profit</h5>
+                            <p id="grossProfit">-</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-
-
-            <canvas class="prog-chart"></canvas>
-
+        <div class="market-news">
+            <h4>Market News</h4>
+            <div id="news-container">
+                <!-- News items will be populated here -->
+            </div>
         </div>
 
-        <div class="popular">
-            <div class="header">
-                <h4>New</h4>
-
-            </div>
-
-            <img src="podcast.png">
-            <div class="audio">
-                <i class='bx bx-podcast'></i>
-                <a href="#">Podcast:Stop-loss Orders</a>
-            </div>
-            <p>Learn to master "RISK MANAGEMENT"</p>
-            <div class="listen">
-                <div class="author">
-                    <img src="podcastman.png">
-                    <div>
-                        <a href="#">Ashmit</a>
-                        <p>Data Analyst</p>
-                    </div>
-                </div>
-                <button>Listen<i class='bx bx-right-arrow-alt'></i></button>
-            </div>
-
-        </div>
-
-
-        <div class="upcoming">
-
-            <div class="header">
-                <h4>SCHEDULE</h4>
-                <div class="month-select">
-                  <select id="month-select">
-                    <option value="January">January</option>
-                    <option value="February">February</option>
-                    <option value="March">March</option>
-                    <option value="April">April</option>
-                    <option value="May">May</option>
-                    <option value="June">June</option>
-                    <option value="July" selected>July</option>
-                    <option value="August">August</option>
-                    <option value="September">September</option>
-                    <option value="October">October</option>
-                    <option value="November">November</option>
-                    <option value="December">December</option>
-                  </select>
-                </div>
-              </div>
-
-            <div class="dates">
-                <div class="item">
-                    <h5>Mo</h5>
-                    <a href="#">12</a>
-                </div>
-                <div class="item active">
-                    <h5>Tu</h5>
-                    <a href="#">13</a>
-                </div>
-                <div class="item">
-                    <h5>We</h5>
-                    <a href="#">14</a>
-                </div>
-                <div class="item">
-                    <h5>Th</h5>
-                    <a href="#">15</a>
-                </div>
-                <div class="item">
-                    <h5>Fr</h5>
-                    <a href="#">16</a>
-                </div>
-                <div class="item">
-                    <h5>Sa</h5>
-                    <a href="#">17</a>
-                </div>
-                <div class="item">
-                    <h5>Su</h5>
-                    <a href="#">18</a>
-                </div>
-            </div>
-
-            <div class="events">
-                <div class="item">
-                    <div>
-                        <i class='bx bxs-label'></i>
-                        <div class="event-info">
-                            <a href="#">NEW SUPPLIER</a>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div>
-                        <i class='bx bxs-label'></i>
-                        <div class="event-info">
-                            <a href="#">TEAM MEETING</a>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div>
-                        <i class='bx bxs-label'></i>
-                        <div class="event-info">
-                            <a href="#">MEETING WITH SAUMYE</a>
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div>
-                        <i class='bx bxs-label'></i>
-                        <div class="event-info">
-                            <a href="#">NEW PRODUCT LAUNCH</a>
-
-                        </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="login.js"></script>
 
 </body>
